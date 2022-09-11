@@ -19,6 +19,17 @@ resource "aws_security_group" "cluster_sg" {
 
 }
 
+resource "aws_security_group_rule" "self_internal" {
+  from_port   = "0"
+  to_port     = "0"
+  self        = true
+  description = "self_internal"
+  protocol    = "-1"
+
+  security_group_id = aws_security_group.cluster_sg.id
+  type              = "ingress"
+}
+
 resource "aws_security_group_rule" "nodeport_tcp_http" {
   cidr_blocks = ["0.0.0.0/0"]
   from_port   = 32739
