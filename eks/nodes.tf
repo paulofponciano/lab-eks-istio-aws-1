@@ -37,3 +37,16 @@ resource "aws_eks_node_group" "this" {
     kubernetes_config_map.aws-auth
   ]
 }
+
+# Optional
+
+resource "null_resource" "update-kubeconfig" {
+  provisioner "local-exec" {
+    command = <<EOF
+    aws eks --region ${var.region} update-kubeconfig --name ${var.cluster_name}
+EOF
+  }
+  depends_on = [
+    aws_eks_node_group.this
+  ]
+}
