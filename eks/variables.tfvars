@@ -51,5 +51,5 @@ enabled_cluster_log_types = [
 
 # Istio
 
-kiali_virtual_service_host         = "kiali.sevira.ninja"
-grafana_kiali_virtual_service_host = "grafana.sevira.ninja"
+kiali_virtual_service_host         = "kiali.dominio.com"
+grafana_kiali_virtual_service_host = "grafana.dominio.com"
